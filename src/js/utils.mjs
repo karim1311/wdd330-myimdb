@@ -24,17 +24,6 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-// Function to update cart counter
-export function updateCartCounter() {
-  const cartItems = getLocalStorage("so-cart") || [];
-  const cartCount = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
-  const cartCountElement = document.getElementById("cart-count");
-
-  if (cartCountElement) {
-    cartCountElement.textContent = cartCount;
-    cartCountElement.style.display = cartCount > 0 ? "flex" : "none";
-  }
-}
 
 // get query string parameters
 export const getParams = (params) => {

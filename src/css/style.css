@@ -229,6 +229,13 @@ button {
   justify-content: center;
 }
 
+.tv-list {
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  justify-content: center;
+}
+
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);

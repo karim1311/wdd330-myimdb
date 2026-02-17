@@ -1,20 +1,17 @@
 import { loadHeaderFooter } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 // import ProductList from "./ProductList.mjs";
-import { renderListWithTemplate, updateCartCounter } from "./utils.mjs";
-// import { productCardTemplate } from "./product-card-temp.mjs";
-// import Alert from "./Alert.js";
+import { renderListWithTemplate } from "./utils.mjs";
+import { productCardTemplate } from "./product-card-temp.mjs";
 
 // Load header and footer, then update cart counter
-loadHeaderFooter().then(() => {
-  updateCartCounter();
-});
+loadHeaderFooter()
 
 // Create product data instance for tents
-const externalServices = new ExternalServices("tents");
+const externalServices = new ExternalServices();
 
-// Fetch and render products
-externalServices.getData().then((products) => {
+// Fetch and render movies
+externalServices.getMediaList("movie", "popular").then((products) => {
   // Take first 4 products from tents for Top Products
   const topProducts = products.slice(0, 4);
   renderListWithTemplate(
@@ -26,11 +23,16 @@ externalServices.getData().then((products) => {
   );
 });
 
-// // Create and generate alert
-// const a = new Alert(
-//   document.getElementById("atemp"),
-//   document.getElementById("alertHolder"),
-// );
+// Fetch and render tvshows
+externalServices.getMediaList("tv", "popular").then((products) => {
+  // Take first 4 products from tents for Top Products
+  const topProducts = products.slice(0, 4);
+  renderListWithTemplate(
+    productCardTemplate,
+    document.querySelector(".tv-list"),
+    topProducts,
+    "beforeend",
+    true,
+  );
+});
 
-// // Generate the alert
-// a.generateAlert();
