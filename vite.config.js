@@ -9,6 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
+        media_page: resolve(__dirname, "src/media_page/index.html"),
       },
     },
   },
