@@ -1,6 +1,13 @@
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../public/fonts/PlayfairDisplay-VariableFont_wght.woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --font-body: Arial, Helvetica, sans-serif;
-  --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --font-headline: "Playfair Display", sans-serif;
   /* colors */
   --primary-color: #f0a868;
   --secondary-color: #525b0f;
