@@ -10,6 +10,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "src/index.html"),
         media_page: resolve(__dirname, "src/media_page/index.html"),
+        search: resolve(__dirname, "src/search/index.html"),
+        mymedia: resolve(__dirname, "src/mymedia/index.html"),
       },
     },
   },
