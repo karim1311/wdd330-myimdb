@@ -35,7 +35,7 @@ export default class ExternalServices {
     return data.results.map((item) => ({
       id: item.id,
       title: item.title || item.name,
-      poster_full: item.poster_path  
+      posterFull: item.poster_path  
       ?  `${imageBaseURL}${item.poster_path}` 
       : "/images/missing-image.svg",
       release_date: item.release_date || item.first_air_date,
@@ -43,18 +43,33 @@ export default class ExternalServices {
     }));
   }
 
-  async getMediaDetails(id) {
-    const data = await this.request(`/movie/${id}?language=en-US`);
+  async getMediaDetails(id, mediaType = "movie") {
+    const data = await this.request(`/${mediaType}/${id}?language=en-US`);
 
     return {
       ...data,
-      poster_full: `${imageBaseURL}${data.poster_path}`,
+      posterFull: `${imageBaseURL}${data.poster_path}`,
+      title: data.title || data.name,
     };
 
   }
 
-  async findProductById(id) {
-    const products = await this.getData();
-    return products.find((item) => item.id === id);
+  async searchMedia(term) {
+    const data = await this.request(`/search/multi?query=${term}&language=en-US`);
+
+    const filteredResults = data.results
+    .filter(item => item.media_type !== "person")
+    .map(item =>  ({
+      ...item,
+      mediaType: item.media_type,
+      posterFull: item.poster_path ? `${imageBaseURL}${item.poster_path}` : null,
+      title: item.title || item.name,
+      originalTitle: item.original_title || item.original_name,
+    }))
+
+    return filteredResults
+
   }
+
+
 }

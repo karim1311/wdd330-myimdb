@@ -1,0 +1,27 @@
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 4px;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 28px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+/* Hover */
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #FFD700;
+}
+
+/* Seleccionado */
+.rating input:checked ~ label {
+  color: #FFD700;
+}

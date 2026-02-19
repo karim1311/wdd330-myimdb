@@ -27,9 +27,9 @@ export default class MediaDetails {
     const clone = template.content.cloneNode(true);
     const [title, image, desc, ] = clone.querySelectorAll("h3, img, p")
 
-    title.textContent = media.original_title;
-    image.src = media.poster_full || "/images/missing-image.svg";
-    image.alt = `Image of ${media.original_title}`;
+    title.textContent = media.title;
+    image.src = media.posterFull || "/images/missing-image.svg";
+    image.alt = `Image of ${media.title}`;
     desc.innerHTML = media.overview;
 
     node.appendChild(clone);

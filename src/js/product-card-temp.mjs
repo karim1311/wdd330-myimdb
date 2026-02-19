@@ -1,10 +1,15 @@
 // Generate HTML for a product card
-export function productCardTemplate(product) {
+export function productCardTemplate(media) {
 
   return `<li class="product-card">
-    <a href="media_page/?id=${product.id}&type=movie">
-      <img src="${product.poster_full}" alt="Image of ${product.original_title}">
-      <h3 class="card__name">${product.title}</h3>
+    <a href="/media_page/?type=${media.mediaType}&id=${media.id}">
+      <img src="${media.posterFull}" alt="Image of ${media.originalTitle}">
+      <h3 class="card__name">${media.title}</h3>
+      ${media.userRating ? `
+        <div class="rating">
+          ${"⭐".repeat(media.userRating)}
+        </div>
+      `:  ""} 
     </a>
   </li>`;
 }
